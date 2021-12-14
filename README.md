@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Contributed By:
+Aakash Dinkar only.
 
 ## Available Scripts
 
@@ -13,6 +15,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+# Project Description
+This is a Tic-Tac-Toe game, which is a two player game. To know more about Tic-Tac-Toe game visit link https://en.wikipedia.org/wiki/Tic-tac-toe .
+This project is developed, by following the tutorial given on the react official website, 
+with the purpose of learning and understanding the concepts of react.
+On the official website the tutorial used the Class Component to build this game, but instead I used the Functional Component.
+Although it has some different design than in the tutorial, since it was customized by me.
 
 ### `npm test`
 
