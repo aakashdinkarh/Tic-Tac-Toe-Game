@@ -1,0 +1,16 @@
+.bigblue {
+  color: blue;
+  background: rgb(43, 226, 177);
+  font-size: medium;
+  letter-spacing: 2px;
+}
+.bigyellow {
+  color: yellow;
+  background:rgb(43, 147, 226);
+  font-size: medium;
+  letter-spacing: 2px;
+}
+.underline {
+  text-decoration: underline;
+  text-shadow: 1px 1px 4px black;
+}
