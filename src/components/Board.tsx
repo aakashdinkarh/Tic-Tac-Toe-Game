@@ -10,34 +10,34 @@ const RENDER_BOARD = [
 ];
 
 interface IBoard {
-    xIsNext: TxIsNext;
-    squares: TSquares;
-    onPlay: (nextSquares: TSquares) => void;
+	xIsNext: TxIsNext;
+	squares: TSquares;
+	onPlay: (nextSquares: TSquares) => void;
 }
 
 export const Board = ({ xIsNext, squares, onPlay }: IBoard) => {
-    function handleClick(i: number) {
-      if (calculateWinner({squares}) || squares[i]) {
-        return;
-      }
-      const nextSquares = squares.slice();
-      if (xIsNext) {
-        nextSquares[i] = 'X';
-      } else {
-        nextSquares[i] = 'O';
-      }
-      onPlay(nextSquares);
-    }
-  
-    return (
-    <div className='board'>
-        {RENDER_BOARD.map((boardRow, rowIndex) => (
-            <div key={rowIndex} className='board-row'>
-                {boardRow.map((squareId) => (
-                    <Square value={squares[squareId]} handleClick={() => handleClick(squareId)} key={squareId} />
-                ))}
-            </div>
-        ))}
-    </div>
-    );
-  }
+	function handleClick(i: number) {
+		if (calculateWinner({ squares }) || squares[i]) {
+			return;
+		}
+		const nextSquares = squares.slice();
+		if (xIsNext) {
+			nextSquares[i] = 'X';
+		} else {
+			nextSquares[i] = 'O';
+		}
+		onPlay(nextSquares);
+	}
+
+	return (
+		<div className='board'>
+			{RENDER_BOARD.map((boardRow, rowIndex) => (
+				<div key={rowIndex} className='board-row'>
+					{boardRow.map((squareId) => (
+						<Square value={squares[squareId]} handleClick={() => handleClick(squareId)} key={squareId} />
+					))}
+				</div>
+			))}
+		</div>
+	);
+};

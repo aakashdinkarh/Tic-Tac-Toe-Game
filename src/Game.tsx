@@ -28,12 +28,15 @@ function Game() {
 	const xIsNext: TxIsNext = currentMove % 2 === 0;
 	const currentSquares: TSquares = history[currentMove];
 
-  const handlePlay = useCallback((nextSquares: TSquares) => {
-		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+	const handlePlay = useCallback(
+		(nextSquares: TSquares) => {
+			const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
 
-		setHistory(nextHistory);
-		setCurrentMove(nextHistory.length - 1);
-	}, [history, currentMove]);
+			setHistory(nextHistory);
+			setCurrentMove(nextHistory.length - 1);
+		},
+		[history, currentMove]
+	);
 
 	const jumpToMove = useCallback((nextMove: I_INITIAL_STATE['currentMove']) => {
 		setCurrentMove(nextMove);
@@ -46,7 +49,7 @@ function Game() {
 			<div className='game'>
 				<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
 
-        <Moves history={history} jumpToMove={jumpToMove}/>
+				<Moves history={history} jumpToMove={jumpToMove} />
 			</div>
 			<br />
 		</>

@@ -14,13 +14,15 @@ interface IMoves {
 }
 
 export const Moves = ({ history, jumpToMove }: IMoves) => {
-	return <ul className='moves'>
-		{history.map((_, move) => {
-			return (
-				<li key={move}>
-					<button onClick={() => jumpToMove(move)}>{getDescription(move)}</button>
-				</li>
-			);
-		})}
-	</ul>
+	return (
+		<ul className='moves'>
+			{history.map((_, move) => {
+				return (
+					<li key={move}>
+						<button onClick={() => jumpToMove(move)}>{getDescription(move)}</button>
+					</li>
+				);
+			})}
+		</ul>
+	);
 };

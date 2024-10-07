@@ -34,5 +34,5 @@ export const Status = ({ squares, xIsNext }: IStatus) => {
 		);
 	}
 
-	return <p className='status'>Next turn : {(xIsNext ? "X" : "O")}</p>
+	return <p className='status'>Next turn : {xIsNext ? 'X' : 'O'}</p>;
 };

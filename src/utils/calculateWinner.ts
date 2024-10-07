@@ -1,4 +1,4 @@
-import { TSquares } from "../Game";
+import { TSquares } from '../Game';
 
 const winningLines = [
 	[0, 1, 2],
@@ -12,7 +12,7 @@ const winningLines = [
 ];
 
 interface ICalculateWinner {
-	squares : TSquares;
+	squares: TSquares;
 }
 
 export function calculateWinner({ squares }: ICalculateWinner) {

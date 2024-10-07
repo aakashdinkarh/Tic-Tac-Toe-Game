@@ -2,8 +2,8 @@ import React from 'react';
 import { TSquare } from '../Game';
 
 interface ISquare {
-    value: TSquare;
-    handleClick: () => void;
+	value: TSquare;
+	handleClick: () => void;
 }
 
 export const Square = ({ value, handleClick }: ISquare) => {
@@ -13,4 +13,4 @@ export const Square = ({ value, handleClick }: ISquare) => {
 			{value}
 		</button>
 	);
-}
+};
