@@ -14,12 +14,17 @@ interface IMoves {
 }
 
 export const Moves = ({ history, jumpToMove }: IMoves) => {
+	const reversedHistory = history.slice().reverse();
+
 	return (
 		<ul className='moves'>
-			{history.map((_, move) => {
+			{reversedHistory.map((_, move) => {
+				const moveNumber = history.length - 1 - move;
 				return (
 					<li key={move}>
-						<button onClick={() => jumpToMove(move)}>{getDescription(move)}</button>
+						<button className='move-btn' onClick={() => jumpToMove(moveNumber)}>
+							{getDescription(moveNumber)}
+						</button>
 					</li>
 				);
 			})}

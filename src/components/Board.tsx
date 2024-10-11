@@ -34,7 +34,11 @@ export const Board = ({ xIsNext, squares, onPlay }: IBoard) => {
 			{RENDER_BOARD.map((boardRow, rowIndex) => (
 				<div key={rowIndex} className='board-row'>
 					{boardRow.map((squareId) => (
-						<Square value={squares[squareId]} handleClick={() => handleClick(squareId)} key={squareId} />
+						<Square
+							value={squares[squareId]}
+							handleClick={() => handleClick(squareId)}
+							key={squareId}
+						/>
 					))}
 				</div>
 			))}

@@ -21,9 +21,13 @@ const INITIAL_STATE: I_INITIAL_STATE = {
 };
 
 function Game() {
-	const [history, setHistory] = useState<I_INITIAL_STATE['history']>(INITIAL_STATE.history);
+	const [history, setHistory] = useState<I_INITIAL_STATE['history']>(
+		INITIAL_STATE.history
+	);
 
-	const [currentMove, setCurrentMove] = useState<I_INITIAL_STATE['currentMove']>(INITIAL_STATE.currentMove);
+	const [currentMove, setCurrentMove] = useState<
+		I_INITIAL_STATE['currentMove']
+	>(INITIAL_STATE.currentMove);
 
 	const xIsNext: TxIsNext = currentMove % 2 === 0;
 	const currentSquares: TSquares = history[currentMove];
@@ -38,20 +42,63 @@ function Game() {
 		[history, currentMove]
 	);
 
+	const restartGame = useCallback(() => {
+		setHistory(INITIAL_STATE.history);
+		setCurrentMove(INITIAL_STATE.currentMove);
+	}, []);
+
 	const jumpToMove = useCallback((nextMove: I_INITIAL_STATE['currentMove']) => {
 		setCurrentMove(nextMove);
 	}, []);
 
+	const toggleTheme = () => {
+		const localStorageKey = '--saved--isDarkThemeEnabled';
+		let isDarkThemeEnabled = true;
+		try {
+			const storedKeyResult = localStorage.getItem(localStorageKey);
+			isDarkThemeEnabled =
+				storedKeyResult != null ? JSON.parse(storedKeyResult) : true;
+		} catch {
+			isDarkThemeEnabled = true;
+		}
+		if (isDarkThemeEnabled) {
+			document.body.className = 'light-theme';
+		} else {
+			document.body.className = 'dark-theme';
+		}
+		localStorage.setItem(
+			'--saved--isDarkThemeEnabled',
+			JSON.stringify(!isDarkThemeEnabled)
+		);
+	};
+
 	return (
 		<>
-			<Status squares={currentSquares} xIsNext={xIsNext} />
+			<button
+				onClick={toggleTheme}
+				className='toggle-theme-btn'
+				id='theme-toggle'
+			>
+				Toggle Theme
+			</button>
 
 			<div className='game'>
-				<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+				<div className='game-details'>
+					<button onClick={restartGame} className='restart-btn'>
+						Restart
+					</button>
+
+					<Board
+						xIsNext={xIsNext}
+						squares={currentSquares}
+						onPlay={handlePlay}
+					/>
+
+					<Status squares={currentSquares} xIsNext={xIsNext} />
+				</div>
 
 				<Moves history={history} jumpToMove={jumpToMove} />
 			</div>
-			<br />
 		</>
 	);
 }
