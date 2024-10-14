@@ -77,7 +77,6 @@ function Game() {
 			<button
 				onClick={toggleTheme}
 				className='toggle-theme-btn'
-				id='theme-toggle'
 			>
 				Toggle Theme
 			</button>
