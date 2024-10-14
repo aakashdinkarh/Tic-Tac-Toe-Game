@@ -65,7 +65,7 @@
     <script>
         const l = window.location;
         const aTag = document.getElementsByTagName('a')[0];
-        aTag.href === l.pathname.split('/').slice(0, 2).join('/');
+        aTag.href = l.pathname.split('/').slice(0, 2).join('/');
     </script>
 </body>
 </html>
